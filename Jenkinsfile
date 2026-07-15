@@ -18,7 +18,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_NAME = "vamandeshmukh/ibm-cicd-demo"
+        IMAGE_NAME = "tanya651/ibm-cicd-demo"
         IMAGE_TAG  = "${env.BUILD_NUMBER}"
     }
 
@@ -26,7 +26,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/dyesmuk/ibm-cicd-demo-4-jun-2026.git'
+                git branch: 'main', url: 'https://github.com/TanuWebpio/ibm-cicd-demo-4-jun-2026.git'
             }
         }
 
@@ -53,7 +53,7 @@ pipeline {
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR', passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
-                    bat "echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin"
+                    bat "docker login"
                     bat "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
                     bat "docker push ${IMAGE_NAME}:latest"
                 }
