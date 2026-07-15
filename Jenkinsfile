@@ -4,7 +4,7 @@
 // One-time setup before running:
 //   1. Jenkins > Manage Jenkins > Credentials > add "Username with password"
 //      with ID "dockerhub-creds" (your DockerHub username + access token)
-//   2. Update IMAGE_NAME below to <your-dockerhub-username>/simple-node-demo
+//   2. Update IMAGE_NAME below to <your-dockerhub-username>/ibm-cicd-demo
 //   3. Run `kubectl apply -f k8s/` once manually so the Deployment/Service exist
 //      before this pipeline tries to `kubectl set image` on it
 //   4. Jenkins agent (native install) needs docker, kubectl, and node on PATH,
@@ -62,14 +62,14 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                bat "kubectl set image deployment/simple-node-demo simple-node-demo=${IMAGE_NAME}:${IMAGE_TAG} --record"
-                bat "kubectl rollout status deployment/simple-node-demo --timeout=90s"
+                bat "kubectl set image deployment/ibm-cicd-demo ibm-cicd-demo=${IMAGE_NAME}:${IMAGE_TAG} --record"
+                bat "kubectl rollout status deployment/ibm-cicd-demo --timeout=90s"
             }
         }
 
         stage('Verify') {
             steps {
-                bat "kubectl get pods -l app=simple-node-demo"
+                bat "kubectl get pods -l app=ibm-cicd-demo"
                 // Docker Desktop's Kubernetes exposes NodePort services on localhost directly
                 bat "curl -s http://localhost:30080/health || true"
             }
