@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ibm-cicd-demo
-          image: vamandeshmukh/ibm-cicd-demo:latest
+          image: tanya651/ibm-cicd-demo:latest
           ports:
             - containerPort: 3000
           env:
