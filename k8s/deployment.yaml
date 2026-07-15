@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
         - name: ibm-cicd-demo
-          # Replace with your actual DockerHub username before first apply.
-          image: YOUR_DOCKERHUB_USERNAME/ibm-cicd-demo:latest
+          image: vamandeshmukh/ibm-cicd-demo:latest
           ports:
             - containerPort: 3000
           env:
