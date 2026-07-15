@@ -1,11 +1,12 @@
 {
-  "name": "simple-node-cicd-demo",
+  "name": "ibm-cicd-demo",
   "version": "1.0.0",
   "description": "Minimal Node.js app for demoing a Git -> Jenkins -> Docker -> DockerHub -> Kubernetes pipeline",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
-    "test": "jest --colors"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --colors"
   },
   "dependencies": {
     "express": "^4.19.2"

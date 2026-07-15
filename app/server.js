@@ -1,4 +1,7 @@
-const express = require('express');
+import express from 'express';
+import os from 'os';
+import { fileURLToPath } from 'url';
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -10,7 +13,7 @@ app.get('/', (req, res) => {
   res.json({
     message: MESSAGE,
     version: process.env.APP_VERSION || '1.0.0',
-    hostname: require('os').hostname() // useful to show load across replicas
+    hostname: os.hostname() // useful to show load across replicas
   });
 });
 
@@ -18,8 +21,10 @@ app.get('/health', (req, res) => {
   res.json({ status: 'UP' });
 });
 
-if (require.main === module) {
+// ESM equivalent of `if (require.main === module)` — only start the
+// server when this file is run directly, not when Jest imports it.
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }
 
-module.exports = app;
+export default app;
