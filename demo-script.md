@@ -62,7 +62,7 @@ Walk the **Stage View** left to right as it runs, narrating each box:
 
 - `kubectl get pods` again — new pods, fresh AGE
 - Refresh the browser tab on the NodePort URL — new message is live
-- Optional: `kubectl rollout history deployment/simple-node-demo` — show revision history
+- Optional: `kubectl rollout history deployment/ibm-cicd-demo` — show revision history
 
 Talking point: "Nobody typed `docker build`, `docker push`, or `kubectl` by
 hand after the push. That's the whole point of CI/CD."
