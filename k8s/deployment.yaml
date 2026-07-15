@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-node-demo
+  name: ibm-cicd-demo
   labels:
-    app: simple-node-demo
+    app: ibm-cicd-demo
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: simple-node-demo
+      app: ibm-cicd-demo
   template:
     metadata:
       labels:
-        app: simple-node-demo
+        app: ibm-cicd-demo
     spec:
       containers:
-        - name: simple-node-demo
+        - name: ibm-cicd-demo
           # Replace with your actual DockerHub username before first apply.
-          image: YOUR_DOCKERHUB_USERNAME/simple-node-demo:latest
+          image: YOUR_DOCKERHUB_USERNAME/ibm-cicd-demo:latest
           ports:
             - containerPort: 3000
           env:
