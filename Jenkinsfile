@@ -49,10 +49,9 @@ pipeline {
 
         stage('Docker Push') {
             steps {
-                    bat "docker login"
-                    bat "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
-                    bat "docker push ${IMAGE_NAME}:latest"
-                }
+                bat "docker login"
+                bat "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+                bat "docker push ${IMAGE_NAME}:latest"
             }
         }
 
