@@ -10,12 +10,19 @@
 //   4. Jenkins agent (native install) needs docker, kubectl, and node on PATH,
 //      and its kubectl context must already point at docker-desktop
 
+// build and push to docker hub 
+
+	// docker build -t ibm-cicd-demo:1.0.0 .
+	// docker tag ibm-cicd-demo:1.0.0 vamandeshmukh/ibm-cicd-demo:1.0.0
+	// docker push vamandeshmukh/ibm-cicd-demo:1.0.0
+
+
 pipeline {
     agent any
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
-        IMAGE_NAME            = "YOUR_DOCKERHUB_USERNAME/simple-node-demo"
+        IMAGE_NAME            = "vamandeshmukh/ibm-cicd-demo"
         IMAGE_TAG              = "${env.BUILD_NUMBER}"
     }
 
@@ -77,3 +84,4 @@ pipeline {
         }
     }
 }
+
