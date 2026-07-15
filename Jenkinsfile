@@ -14,7 +14,7 @@ pipeline {
     agent any
 
     parameters {
-        booleanParam(name: 'PUSH_TO_DOCKERHUB', defaultValue: false, description: 'Push image to Docker Hub')
+        booleanParam(name: 'PUSH_TO_DOCKERHUB', defaultValue: true, description: 'Push image to Docker Hub')
     }
 
     environment {
