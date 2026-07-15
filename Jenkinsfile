@@ -30,7 +30,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/YOUR_GITHUB_USERNAME/simple-node-cicd-demo.git'
+                git branch: 'main', url: 'https://github.com/dyesmuk/ibm-cicd-demo-4-jun-2026.git'
             }
         }
 
