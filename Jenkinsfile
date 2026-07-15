@@ -48,11 +48,7 @@ pipeline {
         }
 
         stage('Docker Push') {
-            when {
-                expression { return params.PUSH_TO_DOCKERHUB == true }
-            }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_CREDENTIALS', usernameVariable: 'DOCKERHUB_CREDENTIALS_USR', passwordVariable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
                     bat "docker login"
                     bat "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
                     bat "docker push ${IMAGE_NAME}:latest"
